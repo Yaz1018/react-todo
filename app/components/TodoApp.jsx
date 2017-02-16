@@ -2,34 +2,43 @@ var React = require("react");
 var TodoList = require('TodoList');
 var AddTodo = require('AddTodo');
 var TodoSearch = require('TodoSearch');
+var uuid = require('uuid');
 
 var TodoApp = React.createClass({
     getInitialState: function () {
-        return{
+        return {
             showCompleted: false,
             searchText: '',
             todos: [
                 {
-                    id: 1,
+                    id: uuid(),
                     text: 'walk the dog'
                 },
                 {
-                    id: 2,
+                    id: uuid(),
                     text: 'Clean the yard'
                 },
                 {
-                    id: 3,
+                    id: uuid(),
                     text: 'Exercise'
                 },
                 {
-                    id: 4,
+                    id: uuid(),
                     text: 'Rule the world'
                 }
             ]
         };
     },
-    onHandleSubmit: (todo) => {
-        alert('new todo: ' + todo)
+    handleAddTodo: function (todo) {
+        this.setState({
+            todos: [
+                ...this.state.todos,
+                {
+                    id: uuid(),
+                    text: todo
+                }
+            ]
+        });
     },
     handleSearch: function (showCompleted, searchText) {
         this.setState({
@@ -38,12 +47,12 @@ var TodoApp = React.createClass({
         });
     },
     render: function () {
-        var {todos} = this.state
+        var {todos} = this.state;
         return(
             <div>
                 <TodoSearch onSearch={this.handleSearch}/>
                 <TodoList todos={todos} />
-                <AddTodo onAddTodo={this.onHandleSubmit}/>
+                <AddTodo onAddTodo={this.handleAddTodo}/>
             </div>
             )
     }
