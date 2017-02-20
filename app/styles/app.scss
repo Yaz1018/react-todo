@@ -1,15 +1,11 @@
 @import "base/variables";
 
-//foundation
+// foundation
 @import "base/foundation-settings";
 @import "foundation";
 @include foundation-everything;
 
-//components
-
-
-p {
-  color: #777;
-}
-
-
+// Components
+@import "components/container";
+@import "components/page-title";
+@import "components/todo";
