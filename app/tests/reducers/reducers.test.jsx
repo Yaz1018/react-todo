@@ -23,7 +23,7 @@ describe('Reducers', () => {
                 type: 'TOGGLE_SHOW_COMPLETED'
             };
 
-            var res = reducers.showCompeletedReducer(df(false), df(action));
+            var res = reducers.showCompletedReducer(df(false), df(action));
 
             expect(res).toEqual(true);
         });
